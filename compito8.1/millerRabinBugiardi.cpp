@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -11,14 +12,14 @@ long long mod_exp(long long base, long long exp, long long mod) {
         if (exp % 2 == 1) {
             result = (result * base) % mod;
         }
-        exp = exp >> 1;
+        exp = exp / 2;
         base = (base * base) % mod;
     }
     return result;
 }
 
 //restituisce true se primo, false altrimenti
-bool mcPrimalityTest(int n){
+bool mcPrimalityTest(int n, int a){
     int s = 0;
     int q = n - 1;
 
@@ -26,8 +27,6 @@ bool mcPrimalityTest(int n){
         s++;
         q = q / 2;
     }
-
-    int a = 2 + rand() % (n - 4);
 
     long long x = mod_exp(a, q, n);
     x = x % n;
@@ -52,18 +51,19 @@ bool mcPrimalityTest(int n){
 
 int main() {
 
-    srand(time(NULL));
+    vector<int> n = {561, 1105, 1729, 2465, 2821, 6601, 8911};
+    vector<string> files = {"result561.txt", "result1105.txt", "result1729.txt", "result2465.txt", "result2821.txt", "result6601.txt", "result8911.txt"};
 
-    int n = 561;
-
-    //apri il file result.txt e scrivici sopra
-    ofstream file("result.txt");
-
-    for(int i = 0; i < 100; i++){
-        file << mcPrimalityTest(n) << endl;
+    for(int i = 0; i < n.size(); i++){
+        ofstream file(files[i]);
+        for(int j = 2; j < n[i]; j++){
+            if(mcPrimalityTest(n[i], j)){
+                file << j << endl;
+            }
+        }
+        file.close();
     }
 
-    file.close();
 
     return 0;
 }
