@@ -18,7 +18,7 @@ long long mod_exp(long long base, long long exp, long long mod) {
     return result;
 }
 
-//restituisce true se primo, false altrimenti
+//restituisce true se probabilmente primo, false altrimenti
 bool mcPrimalityTest(int n, int a){
     int s = 0;
     int q = n - 1;
