@@ -84,12 +84,6 @@ int main() {
 
     int** matrA = generaMatr(DIM, DIM);
 
-    int** matrB = generaMatr(DIM, DIM);
-
-    int** matrC = prodottoMatriceMatrice(matrA, DIM, DIM, matrB, DIM, DIM);
-
-    matrC[rand() % DIM][rand() % DIM] += 1;
-
     for(int i = 0; i < k.size(); i++){
 
         ofstream file(files[i]);
