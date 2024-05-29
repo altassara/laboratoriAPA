@@ -56,9 +56,9 @@ int main() {
 
     for(int i = 0; i < n.size(); i++){
         ofstream file(files[i]);
-        for(int j = 2; j < n[i]; j++){
+        for(int j = 2; j < n[i] - 1; j++){
             if(mcPrimalityTest(n[i], j)){
-                file << j << endl;
+                file << j << "; ";
             }
         }
         file.close();
