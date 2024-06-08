@@ -111,7 +111,10 @@ int main() {
         file.close();
     }
 
-
+    for (int i = 0; i < DIM; i++) {
+        delete[] matrA[i];
+    }
+    delete[] matrA;
 
     return 0;
 }
